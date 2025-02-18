@@ -1,26 +1,10 @@
 "use client";
 
-
-
-import Countdown from "@/components/Countdown";
-import HeroSection from "@/components/HeroSection";
-import Navbar from "@/components/Navbar";
-import { VenueDetails } from "@/components/VenueDetails";
-import ScheduleStep from "@/components/eldora/ScheduleStep";
-
-
-
-
 export default function Home() {
-
   return (
-    <div className="grid grid-cols-1 -gap-1" >
-    <Navbar />
-<HeroSection />
- <Countdown />
- <VenueDetails />
-<ScheduleStep />
+    <div className="flex items-center justify-center h-screen">
+      <h1 className="text-5xl font-bold text-center text-black">La Cantera</h1>
     </div>
- 
   );
 }
+
