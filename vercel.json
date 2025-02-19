@@ -1,6 +1,10 @@
 {
-    "rewrites": [
-      { "source": "/", "destination": "/" },
-      { "source": "/:path*", "destination": "/" }
-    ]
-  }
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "buildCommand": "next build",
+  "framework": "nextjs"
+}
