@@ -48,19 +48,19 @@ const Countdown = () => {
       </div>
 
     <div className="mt-6 flex flex-col sm:flex-row gap-4">
-      <Button
-        as="a"
-        href="https://wa.me/1234567890"
-        target="_blank"
-        variant='solid'
-        className="bg-white text-black px-6 py-3 rounded-lg font-sans"
-      >
+    <Button
+  as="a"
+  href={`https://wa.me/6183972791?text=${encodeURIComponent("¡Hola! Me gustaría confirmar mi asistencia a la boda.")}`}
+  size="sm"
+  variant="bordered"
+  className="ml-4 text-white hover:text-white/80 transition-colors"
+>
         Confirmar Asistencia
       </Button>
 
       <Button
         as="a"
-        href="tel:+1234567890"
+        href="tel:+6183972791"
         variant='bordered'
         className="border-black text-black px-6 py-3 rounded-lg font-sans"
       >

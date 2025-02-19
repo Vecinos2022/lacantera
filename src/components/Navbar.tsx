@@ -51,14 +51,12 @@ export default function Navbar() {
 
   
         <Button
-      
-as="a"
- href="https://wa.me/1234567890"
-          size="sm"
-       variant="bordered"
-          className="ml-4"
-          // onClick={() => alert("RSVP Clicked!")}
-        >
+  as="a"
+  href={`https://wa.me/6183951156?text=${encodeURIComponent("¡Hola! Me gustaría confirmar mi asistencia a la boda.")}`}
+  size="sm"
+  variant="bordered"
+  className="ml-4 text-white hover:text-white/80 transition-colors"
+>
           RSVP
         </Button>
       </div>
