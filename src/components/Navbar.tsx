@@ -57,7 +57,7 @@ as="a"
           size="sm"
        variant="bordered"
           className="ml-4"
-          onClick={() => alert("RSVP Clicked!")}
+          // onClick={() => alert("RSVP Clicked!")}
         >
           RSVP
         </Button>
