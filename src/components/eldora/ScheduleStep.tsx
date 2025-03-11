@@ -9,21 +9,21 @@ const data = [
   {
     title: "Ceremonia Religiosa",
     content:
-      "Centro de Eventos y Convenciones La Cantera. a las 18:00 hrs.",
+      "Centro de Eventos y Convenciones La Cantera. a las 15:00 hrs.",
     srcImage:
       "/schedule/ceremony.png",
   },
   {
     title: "Coctelería",
     content:
-      "Centro de Eventos y Convenciones La Cantera. a las 19:30 hrs.",
+      "Centro de Eventos y Convenciones La Cantera. a las 18:30 hrs.",
     srcImage:
       "/schedule/cocktail.png",
   },
   {
     title: "Recepción",
     content:
-      "Centro de Eventos y Convenciones La Cantera. a las 21:00 hrs.",
+      "Centro de Eventos y Convenciones La Cantera. a las 20:00 hrs.",
     srcImage:
       "/schedule/reception.png",
   }

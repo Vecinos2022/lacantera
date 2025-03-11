@@ -37,7 +37,7 @@ export function VenueDetails() {
               <h3 className="font-serif text-xl text-gold-200">Hora</h3>
             </CardHeader>
             <CardBody className="text-center text-white">
-              <p className="text-lg font-medium font-geistSans">6:00 PM</p>
+              <p className="text-lg font-medium font-geistSans">5:00 PM</p>
             </CardBody>
           </Card>
 
