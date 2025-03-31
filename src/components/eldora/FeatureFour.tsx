@@ -50,7 +50,9 @@ export function TextComponent({
         <div className="w-full px-4 pb-4">
           <div className="relative h-1 w-full overflow-hidden rounded-full">
             <div
-              className={cn("absolute left-0 top-0 h-1 bg-gradient-to-r from-amber-500 to-yellow-600")}
+              className={cn(
+                "absolute left-0 top-0 h-1 bg-gradient-to-r from-amber-500 to-yellow-600",
+              )}
               style={{ width: `${loadingWidthPercent}%` }}
             />
           </div>

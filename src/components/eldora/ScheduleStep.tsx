@@ -8,26 +8,19 @@ import { TextComponent } from "./FeatureFour";
 const data = [
   {
     title: "Ceremonia Religiosa",
-    content:
-      "Centro de Eventos y Convenciones La Cantera. a las 15:00 hrs.",
-    srcImage:
-      "/schedule/ceremony.png",
+    content: "Centro de Eventos y Convenciones La Cantera. a las 15:00 hrs.",
+    srcImage: "/schedule/ceremony.png",
   },
   {
     title: "Coctelería",
-    content:
-      "Centro de Eventos y Convenciones La Cantera. a las 18:30 hrs.",
-    srcImage:
-      "/schedule/cocktail.png",
+    content: "Centro de Eventos y Convenciones La Cantera. a las 18:30 hrs.",
+    srcImage: "/schedule/cocktail.png",
   },
   {
     title: "Recepción",
-    content:
-      "Centro de Eventos y Convenciones La Cantera. a las 20:00 hrs.",
-    srcImage:
-      "/schedule/reception.png",
-  }
-
+    content: "Centro de Eventos y Convenciones La Cantera. a las 20:00 hrs.",
+    srcImage: "/schedule/reception.png",
+  },
 ];
 
 export default function ScheduleStep() {
@@ -48,13 +41,18 @@ export default function ScheduleStep() {
   }, [timer]);
 
   return (
-    <section className="flex flex-col justify-center items-center px-10 py-24 " id="schedule">
-        <h2 className="text-5xl font-playfair  font-bold text-center mb-12 text-black ">Itinerario del Evento</h2>
+    <section
+      className="flex flex-col justify-center items-center px-10 py-24 "
+      id="schedule"
+    >
+      <h2 className="text-5xl font-playfair  font-bold text-center mb-12 text-black ">
+        Itinerario del Evento
+      </h2>
       <div className=" grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="space-y-6 ">
           {data.map((item, index) => (
             <button
-            aria-label={item.title}
+              aria-label={item.title}
               className="w-full"
               key={item.title}
               onClick={() => {
