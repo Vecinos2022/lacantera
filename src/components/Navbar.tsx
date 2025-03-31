@@ -2,11 +2,12 @@
 import { useState, useEffect } from "react";
 import { Button, Link as HeroLink } from "@heroui/react"; // Import HeroUI components
 import Link from "next/link";
-
+import { useDynamicMetadataTitle } from "./DynamicTitle";
+import { capitalizeEachWord } from "@/app/helper/capitalizeEachWord";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-
+  const title = useDynamicMetadataTitle();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,10 +25,10 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 className="text-4xl font-playfair text-white">
+          {capitalizeEachWord(title)}
+        </h1>
 
-        <h1 className="text-4xl font-playfair text-white">Jaqueline & Arodi</h1>
-
-       
         <ul className="flex gap-6 text-lg font-sans">
           <li>
             <HeroLink
@@ -42,21 +43,22 @@ export default function Navbar() {
             <HeroLink
               as={Link}
               href="#contact"
-             className="text-gray-400 hover:text-gray-200"
+              className="text-gray-400 hover:text-gray-200"
             >
               Detalles
             </HeroLink>
           </li>
         </ul>
 
-  
         <Button
-  as="a"
-  href={`https://wa.me/6183972791?text=${encodeURIComponent("¡Hola! Me gustaría confirmar mi asistencia a la boda.")}`}
-  size="sm"
-  variant="bordered"
-  className="ml-4 text-white hover:text-white/80 transition-colors"
->
+          as="a"
+          href={`https://wa.me/6183972791?text=${encodeURIComponent(
+            "¡Hola! Me gustaría confirmar mi asistencia a la boda.",
+          )}`}
+          size="sm"
+          variant="bordered"
+          className="ml-4 text-white hover:text-white/80 transition-colors"
+        >
           RSVP
         </Button>
       </div>
