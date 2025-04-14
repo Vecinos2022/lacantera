@@ -41,7 +41,7 @@ export const eventData = {
         { label: "Contacto", href: "#contact" },
       ],
       rsvpMessage: "¡Hola! Me gustaría confirmar mi asistencia a la boda!",
-      whatsAppNumber: "",
+      whatsAppNumber: "6183972791",
       weddingDate: new Date("2025-05-31T20:00:00"),
       bannerImage: "/wedding-banner-c&k.png",
       scheduleData: [
