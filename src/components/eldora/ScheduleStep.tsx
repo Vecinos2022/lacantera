@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { cn } from "@heroui/react";
 import { TextComponent } from "./FeatureFour";
+import { eventData } from "@/app/constants/constants";
 
 const data = [
   {
@@ -30,7 +31,12 @@ const data = [
 
 ];
 
-export default function ScheduleStep() {
+export default function ScheduleStep({ currentEvent }: { currentEvent: keyof typeof eventData }) {
+
+    const eventDetails = eventData[currentEvent];
+  
+  
+    const { scheduleData } = eventData[currentEvent] || {};
   const [featureOpen, setFeatureOpen] = useState<number>(0);
   const [timer, setTimer] = useState<number>(0);
   useEffect(() => {
@@ -46,13 +52,19 @@ export default function ScheduleStep() {
       setTimer(0);
     }
   }, [timer]);
-
+  if (!eventDetails) {
+    return (
+      <div className="flex justify-center items-center h-screen text-black font-bold">
+        Oops. Este elemento no existe.
+      </div>
+    );
+  }
   return (
     <section className="flex flex-col justify-center items-center px-10 py-24 " id="schedule">
         <h2 className="text-5xl font-playfair  font-bold text-center mb-12 text-black ">Itinerario del Evento</h2>
       <div className=" grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="space-y-6 ">
-          {data.map((item, index) => (
+          {scheduleData.map((item, index) => (
             <button
             aria-label={item.title}
               className="w-full"
@@ -79,7 +91,7 @@ export default function ScheduleStep() {
               "relative h-96 w-full overflow-hidden rounded-lg md:h-[500px]",
             )}
           >
-            {data.map((item, index) => (
+            {scheduleData.map((item, index) => (
               <img
                 alt={item.title}
                 className={cn(
@@ -89,7 +101,7 @@ export default function ScheduleStep() {
                 )}
                 key={item.title}
                 src={item.srcImage}
-                style={{ zIndex: data.length - index }}
+                style={{ zIndex: scheduleData.length - index }}
               />
             ))}
           </div>

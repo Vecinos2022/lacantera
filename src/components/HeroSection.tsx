@@ -2,12 +2,26 @@
 import React from 'react'
 import Image from 'next/image'
 import { Divider } from '@heroui/react'
+import { eventData } from '@/app/constants/constants'
+import dayjs from 'dayjs'
 
-const HeroSection = () => {
+const HeroSection = ({ currentEvent }: { currentEvent: keyof typeof eventData }) => {
+
+
+    const eventDetails = eventData[currentEvent];
+    if (!eventDetails) {
+      return (
+        <div className="flex justify-center items-center h-screen text-black font-bold">
+          Oops. Este elemento no existe.
+        </div>
+      );
+    }
+  
+    const { bannerImage, weddingDate } = eventData[currentEvent] || {};
   return     (
     <section className="relative h-screen w-full overflow-hidden">
     <Image
-      src="/wedding-bg.png"
+      src={`${bannerImage}`}
       alt="Wedding Background"
       className="object-cover scale-105"
       style={{ filter: "brightness(0.7) " }}
@@ -25,7 +39,7 @@ height={1080}
       <h1 className="font-playfair text-5xl md:text-7xl font-medium mb-4  ">¡Nos Casamos!</h1>
       <Divider className="w-56 h-1 bg-white mx-auto mb-4"  />
       <p className="text-xl md:text-2xl font-playfair">Te esperamos en nuestro día especial</p>
-      <p className="text-xl md:text-2xl font-sans">03.05.2025</p>
+      <p className="text-xl md:text-2xl font-sans">{dayjs(weddingDate).format('DD.MM.YYYY')}</p>
     </div>
   </section>
 

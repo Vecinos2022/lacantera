@@ -2,8 +2,22 @@ import { CalendarDays, Clock, MapPin } from "lucide-react"
 import { Button } from "@heroui/react"
 import { Card, CardBody, CardHeader } from "@heroui/react"
 import Image from "next/image"
+import { eventData } from "@/app/constants/constants"
+import dayjs from "dayjs"
 
-export function VenueDetails() {
+export function VenueDetails({ currentEvent }: { currentEvent: keyof typeof eventData }) {
+   const eventDetails = eventData[currentEvent];
+  
+  
+    const { weddingDate } = eventData[currentEvent] || {};
+
+    if (!eventDetails) {
+      return (
+        <div className="flex justify-center items-center h-screen text-black font-bold">
+          Oops. Este elemento no existe.
+        </div>
+      );
+    }
   return (
     <section id="details" className="relative min-h-[600px] overflow-hidden rounded-md mx-10">
     {/* Background Image */}
@@ -24,7 +38,7 @@ export function VenueDetails() {
               <h3 className="font-serif text-xl text-gold-200">Fecha</h3>
             </CardHeader>
             <CardBody className="text-center text-white">
-              <p className="text-lg font-medium font-geistSans">03.05.2025</p>
+              <p className="text-lg font-medium font-geistSans">{dayjs(weddingDate).format('DD.MM.YYYY')}</p>
             </CardBody>
           </Card>
 
@@ -37,7 +51,9 @@ export function VenueDetails() {
               <h3 className="font-serif text-xl text-gold-200">Hora</h3>
             </CardHeader>
             <CardBody className="text-center text-white">
-              <p className="text-lg font-medium font-geistSans">5:00 PM</p>
+              <p className="text-lg font-medium font-geistSans">
+                {dayjs(weddingDate).format('hh:mm a')}
+              </p>
             </CardBody>
           </Card>
 
@@ -57,7 +73,7 @@ export function VenueDetails() {
               <Button
                 variant="bordered"
                 className="bg-white/20 hover:bg-white/30 text-white border-white/20 backdrop-blur-sm"
-                onClick={() => window.open("https://maps.app.goo.gl/3JhE5LZTd5UbuCM3A", "_blank")}
+                onPress={() => window.open("https://maps.app.goo.gl/3JhE5LZTd5UbuCM3A", "_blank")}
               >
                 <MapPin className="h-4 w-4 mr-2" />
                 Ver en Mapa

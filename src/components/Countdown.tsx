@@ -1,11 +1,24 @@
 'use client'
+import { eventData } from '@/app/constants/constants';
 import { Card, Button } from '@heroui/react';
+import dayjs from 'dayjs';
 import React from 'react'
 import { useEffect, useState } from "react";
+import 'dayjs/locale/es';
+dayjs.locale('es');
+const Countdown = ({ currentEvent }: { currentEvent: keyof typeof eventData }) => {
 
-const WEDDING_DATE = new Date("2025-05-03T17:00:00.000-05:00"); // 3 de mayo a las 17:00
+  const eventDetails = eventData[currentEvent];
 
-const Countdown = () => {
+
+  const { weddingDate, whatsAppNumber } = eventData[currentEvent] || {};
+  function formatWeddingDate(weddingDate: Date): string {
+    return dayjs(weddingDate)
+      .format('dddd D [de] MMMM, YYYY')
+      .replace(/^\w/, (c) => c.toUpperCase()) // Capitalize the first letter of the day
+      .replace(/ de (\w)/, (match, p1) => ` de ${p1.toUpperCase()}`); // Capitalize the first letter of the month
+  }
+  
     const [timeLeft, setTimeLeft] = useState({
         days: 0,
         hours: 0,
@@ -16,7 +29,7 @@ const Countdown = () => {
       useEffect(() => {
         const timer = setInterval(() => {
           const now = new Date()
-          const difference = WEDDING_DATE.getTime() - now.getTime()
+          const difference = weddingDate.getTime() - now.getTime()
     
           if (difference <= 0) {
             clearInterval(timer)
@@ -32,12 +45,21 @@ const Countdown = () => {
         }, 1000)
     
         return () => clearInterval(timer)
-      }, [])
-  
+      }, [weddingDate])
+
+      if (!eventDetails) {
+        return (
+          <div className="flex justify-center items-center h-screen text-black font-bold">
+            Oops. Este elemento no existe.
+          </div>
+        );
+      }
   return (     
     <section className="relative mt-[-60px] pt-32 pb-16 bg-gradient-to-b from-transparent via-gray-200 to-gray-100 flex flex-col items-center justify-center  p-8 text-center">
     <h1 className="text-5xl font-playfair font-bold text-black">Nuestro día</h1>
-    <p className="text-lg mt-4 py-4 text-black">Sábado 3 de Mayo, 2025</p>
+    
+    <p className="text-lg mt-4 py-4 text-black">{formatWeddingDate(weddingDate)}</p>
+
 
     <div className="container flex flex-col items-center text-center">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
@@ -51,7 +73,7 @@ const Countdown = () => {
     <div className="mt-6 flex flex-col sm:flex-row gap-4">
       <Button
         as="a"
-        href={`https://wa.me/6183972791?text=${encodeURIComponent("¡Hola! Me gustaría confirmar mi asistencia a la boda.")}`}
+        href={`https://wa.me/${whatsAppNumber}?text=${encodeURIComponent("¡Hola! Me gustaría confirmar mi asistencia a la boda.")}`}
         color='warning'
         variant="bordered"
         className="w-full sm:w-auto text-black transition-colors"
@@ -60,7 +82,7 @@ const Countdown = () => {
       </Button>
       <Button
         as="a"
-        href="tel:+6183972791"
+        href={`tel:+${whatsAppNumber}`}
         variant='bordered'
         className="w-full sm:w-auto border-black text-black px-6 py-3 rounded-lg font-sans"
       >
