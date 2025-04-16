@@ -35,7 +35,7 @@ export const eventData = {
  quote: ""
     },
     "c&k": {
-      title: "Carla & Karlo",
+      title: "Claudia & Karlo",
       navItems: [
         { label: "Itinerario", href: "#schedule" },
         { label: "Contacto", href: "#contact" },
