@@ -13,7 +13,7 @@ export const eventData = {
         {
           title: "Ceremonia Religiosa",
           content:
-            "Centro de Eventos y Convenciones La Cantera. a las 15:00 hrs.",
+            "Centro de Eventos y Convenciones La Cantera. a las 17:00 hrs.",
           srcImage:
             "/schedule/ceremony.png",
         },
