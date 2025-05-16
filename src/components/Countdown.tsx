@@ -11,7 +11,8 @@ const Countdown = ({ currentEvent }: { currentEvent: keyof typeof eventData }) =
   const eventDetails = eventData[currentEvent];
 
 
-  const { weddingDate, whatsAppNumber } = eventData[currentEvent] || {};
+  const { weddingDate, whatsAppNumber, countdown, rsvpMessage } = eventData[currentEvent] || {};
+
   function formatWeddingDate(weddingDate: Date): string {
     return dayjs(weddingDate)
       .format('dddd D [de] MMMM, YYYY')
@@ -56,7 +57,7 @@ const Countdown = ({ currentEvent }: { currentEvent: keyof typeof eventData }) =
       }
   return (     
     <section className="relative mt-[-60px] pt-32 pb-16 bg-gradient-to-b from-transparent via-gray-200 to-gray-100 flex flex-col items-center justify-center  p-8 text-center">
-    <h1 className="text-5xl font-playfair font-bold text-black">Nuestro día</h1>
+    <h1 className="text-5xl font-playfair font-bold text-black">{countdown.title}</h1>
     
     <p className="text-lg mt-4 py-4 text-black">{formatWeddingDate(weddingDate)}</p>
 
@@ -73,12 +74,12 @@ const Countdown = ({ currentEvent }: { currentEvent: keyof typeof eventData }) =
     <div className="mt-6 flex flex-col sm:flex-row gap-4">
       <Button
         as="a"
-        href={`https://wa.me/${whatsAppNumber}?text=${encodeURIComponent("¡Hola! Me gustaría confirmar mi asistencia a la boda.")}`}
+        href={`https://wa.me/${whatsAppNumber}?text=${encodeURIComponent(`${rsvpMessage}`)}`}
         color='warning'
         variant="bordered"
         className="w-full sm:w-auto text-black transition-colors"
       >
-        Confirmar Asistencia
+        {countdown.cta}
       </Button>
       <Button
         as="a"
@@ -86,7 +87,7 @@ const Countdown = ({ currentEvent }: { currentEvent: keyof typeof eventData }) =
         variant='bordered'
         className="w-full sm:w-auto border-black text-black px-6 py-3 rounded-lg font-sans"
       >
-        Contacto 
+        {countdown.cta2} 
       </Button>
     </div>
   </section>)

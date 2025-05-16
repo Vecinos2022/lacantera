@@ -5,6 +5,15 @@ export const eventData = {
         { label: "Itinerario", href: "#schedule" },
         { label: "Contacto", href: "#contact" },
       ],
+      hero: {
+        title:"¡Nos Casamos!",
+        subtitle: "Te esperamos en nuestro día especial",
+      },
+      countdown: {
+        title: "Nuestro día",
+        cta: "Confirmar Asistencia",
+        cta2: "Contacto"
+      },
       rsvpMessage: "¡Hola! Me gustaría confirmar mi asistencia a la boda!.",
        whatsAppNumber: "6183972791",
       weddingDate: new Date("2025-05-03T17:00:00"),
@@ -40,6 +49,15 @@ export const eventData = {
         { label: "Itinerario", href: "#schedule" },
         { label: "Contacto", href: "#contact" },
       ],
+      hero: {
+        title:"¡Nos Casamos!",
+        subtitle: "Te esperamos en nuestro día especial",
+      },
+      countdown: {
+        title: "Nuestro día",
+        cta: "Confirmar Asistencia",
+        cta2: "Contacto"
+      },
       rsvpMessage: "¡Hola! Me gustaría confirmar mi asistencia a la boda!",
       whatsAppNumber: "6183972791",
       weddingDate: new Date("2025-05-31T20:00:00"),
@@ -63,5 +81,42 @@ export const eventData = {
       ],
       quote: "Hay momentos en la vida que son especiales por sí solos, pero el compartirlo con personas tan especiales como ustedes, se convierten en momentos imposibles de olvidar."
 
+    },
+    "dana": {
+      title: "Mis XV",
+      navItems: [
+        { label: "Itinerario", href: "#schedule" },
+        { label: "Contacto", href: "#contact" },
+      ],
+      hero: {
+        title:"Dana Carolina García Arellano",
+        subtitle: "Mis quince años",
+      },
+      countdown: {
+        title: "Mi gran día",
+        cta: "Confirmar Asistencia",
+        cta2: "Contacto"
+      },
+      rsvpMessage: "¡Hola! Me gustaría confirmar mi asistencia a los XV!",
+       whatsAppNumber: "6183972791",
+      weddingDate: new Date("2025-06-14T21:00:00"),
+      bannerImage: "/event-banner-dana.png",
+       scheduleData: [
+        {
+          title: "Ceremonia Religiosa",
+          content:
+            "Nuevo Santuario de Nuestra Señora de Guadalupe. a las 17:00 hrs.",
+          srcImage:
+            "/schedule/ceremony-dana.png",
+        },
+        {
+          title: "Recepción",
+          content:
+            "Centro de Eventos y Convenciones La Cantera. a las 21:00 hrs.",
+          srcImage:
+            "/schedule/reception-dana.png",
+        }
+      ],
+ quote: ""
     },
   };

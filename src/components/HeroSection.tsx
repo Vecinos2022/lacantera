@@ -17,7 +17,7 @@ const HeroSection = ({ currentEvent }: { currentEvent: keyof typeof eventData })
       );
     }
   
-    const { bannerImage, weddingDate } = eventData[currentEvent] || {};
+    const { bannerImage, weddingDate, hero} = eventData[currentEvent] || {};
   return     (
     <section className="relative h-screen w-full overflow-hidden">
     <Image
@@ -36,9 +36,9 @@ height={1080}
     
     <div className="absolute  inset-0 -bottom-64 flex flex-col items-center justify-center text-center text-white">
       {/* <div className="absolute inset-0 -bottom-64 w-screen h-[400px]  bg-white/20 mx-auto" /> */}
-      <h1 className="font-playfair text-5xl md:text-7xl font-medium mb-4  ">¡Nos Casamos!</h1>
+      <h1 className="font-playfair text-5xl md:text-7xl font-medium mb-4  ">{hero.title}</h1>
       <Divider className="w-56 h-1 bg-white mx-auto mb-4"  />
-      <p className="text-xl md:text-2xl font-playfair">Te esperamos en nuestro día especial</p>
+      <p className="text-xl md:text-2xl font-playfair">{hero.subtitle}</p>
       <p className="text-xl md:text-2xl font-sans">{dayjs(weddingDate).format('DD.MM.YYYY')}</p>
     </div>
   </section>

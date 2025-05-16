@@ -5,31 +5,8 @@ import { useEffect, useState } from "react";
 import { cn } from "@heroui/react";
 import { TextComponent } from "./FeatureFour";
 import { eventData } from "@/app/constants/constants";
+import Image from "next/image";
 
-const data = [
-  {
-    title: "Ceremonia Religiosa",
-    content:
-      "Centro de Eventos y Convenciones La Cantera. a las 15:00 hrs.",
-    srcImage:
-      "/schedule/ceremony.png",
-  },
-  {
-    title: "Coctelería",
-    content:
-      "Centro de Eventos y Convenciones La Cantera. a las 18:30 hrs.",
-    srcImage:
-      "/schedule/cocktail.png",
-  },
-  {
-    title: "Recepción",
-    content:
-      "Centro de Eventos y Convenciones La Cantera. a las 20:00 hrs.",
-    srcImage:
-      "/schedule/reception.png",
-  }
-
-];
 
 export default function ScheduleStep({ currentEvent }: { currentEvent: keyof typeof eventData }) {
 
@@ -48,10 +25,14 @@ export default function ScheduleStep({ currentEvent }: { currentEvent: keyof typ
 
   useEffect(() => {
     if (timer > 10000) {
-      setFeatureOpen((prev) => (prev + 1) % data.length);
+      setFeatureOpen((prev) => {
+        const nextIndex = prev + 1;
+        // If we've reached the end, go back to the first item
+        return nextIndex >= scheduleData.length ? 0 : nextIndex;
+      });
       setTimer(0);
     }
-  }, [timer]);
+  }, [timer, scheduleData]);
   if (!eventDetails) {
     return (
       <div className="flex justify-center items-center h-screen text-black font-bold">
@@ -92,16 +73,20 @@ export default function ScheduleStep({ currentEvent }: { currentEvent: keyof typ
             )}
           >
             {scheduleData.map((item, index) => (
-              <img
+              <Image
                 alt={item.title}
+                width={500}
+                height={500}
                 className={cn(
-                  "absolute h-[500px] w-full transform-gpu rounded-lg object-cover transition-all duration-300",
-                  featureOpen === index ? "scale-100" : "scale-70",
+                                "absolute h-[500] w-full transform-gpu rounded-lg object-cover transition-all duration-300",
+                  featureOpen === index ? "scale-100" : "scale-x-50",
                   featureOpen > index ? "translate-y-full" : "",
                 )}
                 key={item.title}
                 src={item.srcImage}
-                style={{ zIndex: scheduleData.length - index }}
+                style={{ zIndex: scheduleData.length - index,
+                  objectPosition: "center bottom",
+                 }}
               />
             ))}
           </div>

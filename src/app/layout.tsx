@@ -21,7 +21,7 @@ const geistSans = Geist({
   weight: ["400", "700"],
 });
 export const metadata = {
-  title: 'Jaqueline & Arodi',
+  title: 'Eventos La Cantera',
   description: 'Descripción del sitio'
 }
 
@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="es"  style={{ overflowX: 'hidden', scrollbarWidth: 'none', scrollBehavior: 'smooth' }} >
    <head>
-        <title>Jaqueline & Arodi</title>
+        <title>Eventos La Cantera</title>
         <meta name="description" content="Descripción del sitio" />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 36%22><text y=%2232%22 font-size=%2232%22>💍</text></svg>" />
       </head>
