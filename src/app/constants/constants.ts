@@ -99,7 +99,7 @@ export const eventData = {
       },
       rsvpMessage: "¡Hola! Me gustaría confirmar mi asistencia a los XV!",
        whatsAppNumber: "6183972791",
-      weddingDate: new Date("2025-06-14T21:00:00"),
+      weddingDate: new Date("2025-06-14T20:00:00"),
       bannerImage: "/event-banner-dana.png",
        scheduleData: [
         {
@@ -112,7 +112,7 @@ export const eventData = {
         {
           title: "Recepción",
           content:
-            "Centro de Eventos y Convenciones La Cantera. a las 21:00 hrs.",
+            "Centro de Eventos y Convenciones La Cantera. a las 20:00 hrs.",
           srcImage:
             "/schedule/reception-dana.png",
         }

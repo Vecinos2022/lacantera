@@ -41,13 +41,15 @@ export default function ScheduleStep({ currentEvent }: { currentEvent: keyof typ
     );
   }
   return (
-    <section className="flex flex-col justify-center items-center px-10 py-24 " id="schedule">
-        <h2 className="text-5xl font-playfair  font-bold text-center mb-12 text-black ">Itinerario del Evento</h2>
-      <div className=" grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="space-y-6 ">
+    <section className="flex flex-col justify-center items-center px-4 md:px-10 py-16 md:py-24" id="schedule">
+      <h2 className="text-3xl md:text-5xl font-playfair font-bold text-center mb-8 md:mb-12 text-black">
+        Itinerario del Evento
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl">
+        <div className="space-y-4 md:space-y-6">
           {scheduleData.map((item, index) => (
             <button
-            aria-label={item.title}
+              aria-label={item.title}
               className="w-full"
               key={item.title}
               onClick={() => {
@@ -66,29 +68,61 @@ export default function ScheduleStep({ currentEvent }: { currentEvent: keyof typ
             </button>
           ))}
         </div>
-        <div className="h-full">
+        
+        {/* Image container */}
+        <div className="mt-6 md:mt-0">
           <div
             className={cn(
-              "relative h-96 w-full overflow-hidden rounded-lg md:h-[500px]",
+              "relative h-80 md:h-96 lg:h-[500px] w-full overflow-hidden rounded-lg"
             )}
           >
-            {scheduleData.map((item, index) => (
-              <Image
-                alt={item.title}
-                width={500}
-                height={500}
-                className={cn(
-                                "absolute h-[500] w-full transform-gpu rounded-lg object-cover transition-all duration-300",
-                  featureOpen === index ? "scale-100" : "scale-x-50",
-                  featureOpen > index ? "translate-y-full" : "",
-                )}
-                key={item.title}
-                src={item.srcImage}
-                style={{ zIndex: scheduleData.length - index,
-                  objectPosition: "center bottom",
-                 }}
-              />
-            ))}
+            {/* Mobile view - vertical layout */}
+            <div className="md:hidden block h-full">
+              {scheduleData.map((item, index) => (
+                <div 
+                  key={`mobile-${item.title}`}
+                  className={cn(
+                    "absolute top-0 left-0 w-full h-full transition-all duration-500 ease-in-out",
+                    featureOpen === index 
+                      ? "opacity-100 translate-y-0" 
+                      : "opacity-0 translate-y-full"
+                  )}
+                >
+                  <Image
+                    alt={item.title}
+                    width={500}
+                    height={500}
+                    className="w-full h-full object-cover rounded-lg"
+                    src={item.srcImage}
+                    style={{ 
+                      objectPosition: "center top" 
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+            
+            {/* Desktop view - stacked images with animations */}
+            <div className="hidden md:block relative h-full w-full">
+              {scheduleData.map((item, index) => (
+                <Image
+                  alt={item.title}
+                  width={500}
+                  height={500}
+                  className={cn(
+                    "absolute h-full w-full transform-gpu rounded-lg object-cover transition-all duration-300",
+                    featureOpen === index ? "scale-100" : "scale-95 opacity-30",
+                    featureOpen > index ? "translate-y-full" : "",
+                  )}
+                  key={`desktop-${item.title}`}
+                  src={item.srcImage}
+                  style={{ 
+                    zIndex: scheduleData.length - index,
+                    objectPosition: "center top",
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
